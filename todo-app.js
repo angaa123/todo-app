@@ -28,8 +28,9 @@ function renderTodos(){
         }
         li.innerHTML = `
         <span>${todo.task}</span> 
-        <button class="btn btn-success ml-2 mrk_btn">Mark</button>
-        <button class="btn btn-danger del_btn"">Delete</button>
+        <button class="btn btn-success ml-2 mrk_btn" data-index="${index}">Mark</button>
+        <button class="btn btn-success ml-2 unmrk_btn" data-index="${index}">UnMark</button>
+        <button class="btn btn-danger del_btn"  data-index="${index}">Delete</button>
         `;
         listOfTodo.appendChild(li); 
 
@@ -43,12 +44,19 @@ function renderTodos(){
     document.querySelectorAll('.del_btn').forEach(button => {
         button.addEventListener('click', deleteTodo);
     });
-
+    document.querySelectorAll('.unmrk_btn').forEach(button => {
+        button.addEventListener('click', unmarkTodo);
+    });
 }
 
 function markTodo(event) {
     let index = event.target.getAttribute('data-index');
     todos[index].mark = true;
+    renderTodos();
+}
+function unmarkTodo(event) {
+    let index = event.target.getAttribute('data-index');
+    todos[index].mark = false;
     renderTodos();
 }
 
