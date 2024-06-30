@@ -8,7 +8,7 @@ function main (){
 function addTodo(event){
     event.preventDefault(); // Prevent form from submitting normally
     let todoInput = document.querySelector('#todoInput');
-    todos.push({ task: todoInput.value, mark: false })
+    todos.push({ task: todoInput.value, mark: false });
     console.log(todos);
     renderTodos();
     todoInput.value = ''; // Clear the input field after adding the todo item
