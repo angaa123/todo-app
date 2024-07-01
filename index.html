@@ -1,22 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container">
-        <h1 class="mt-5">Todo List</h1>
-        <form id="todoForm" class="mb-4">
-            <div class="form-group">
-                <input type="text" class="form-control" id="todoInput" placeholder="Enter a new todo">
-            </div>
-            <button type="submit" class="btn btn-primary">Add Todo</button>
-        </form>
-        <ul class="list-group"></ul>
-    </div>
-<script src="./todo-app.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=drem evice-width, rem initial-scale=1.0"
+		/>
+		<title>Todo App</title>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		/>
+		<script
+			src="https://kit.fontawesome.com/98222a6cce.js"
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body>
+		<div>
+			<h1 class="mt-5">Todo List</h1>
+			<form id="todoForm" class="mb-4">
+				<div class="form-group">
+					<input
+						type="text"
+						class="form-control"
+						id="todoInput"
+						placeholder="Enter a new todo"
+					/>
+				</div>
+				<button type="submit" class="btn btn-primary">Add Todo</button>
+			</form>
+			<div class="container-lg d-flex justify-content-around">
+				<div class="border p-2 g-col-6" style="width: rem">
+					<header class="card-header d-flex justify-content-between">
+						<h3><i class="fa-solid fa-circle"></i>To do</h3>
+						<span class="badge badge-pill">0</span>
+					</header>
+					<ul class="todo-list-group"></ul>
+				</div>
+				<div class="border p-2 g-col-6" style="width: rem">
+					<header class="card-header d-flex justify-content-between">
+						<h3><i class="fa-solid fa-circle"></i>In progress</h3>
+						<span class="badge badge-pill">0</span>
+					</header>
+					<ul class="in-progress-list-group"></ul>
+				</div>
+				<div class="border p-2 g-col-6" style="width: rem">
+					<header class="card-header d-flex justify-content-between">
+						<h3><i class="fa-solid fa-circle"></i>Completed</h3>
+						<span class="badge badge-pill">0</span>
+					</header>
+					<ul class="completed-list-group"></ul>
+				</div>
+				<div class="border p-2 g-col-6" style="width: rem">
+					<header class="card-header d-flex justify-content-between" class="he">
+						<h3><i class="fa-solid fa-circle text-danger"></i>Blocked</h3>
+						<span class="badge badge-pill">0</span>
+					</header>
+					<ul class="blocked-list-group"></ul>
+				</div>
+			</div>
+		</div>
+		<script src="./todo-app.js"></script>
+	</body>
 </html>
