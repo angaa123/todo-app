@@ -1,24 +1,32 @@
-let todos = [{}];
+let todos = [];
 document.addEventListener("DOMContentLoaded", main);
 function main() {
-	var todoForm = document.querySelector("#todoForm");
-	todoForm.addEventListener("submit", addTodo);
+	let todoSave = document.querySelector("#todoSave");
+	todoSave.addEventListener("click", addTodo);
 }
 
-function addTodo(event) {
-	event.preventDefault(); // Prevent form from submitting normally
+function addTodo() {
+	let markSave = document.querySelector("#mark");
 	let todoInput = document.querySelector("#todoInput");
-	todos.push({ task: todoInput.value, mark: "todo" });
+	todos.push({ task: todoInput.value, mark: markSave.value });
 	console.log(todos);
 	renderTodos();
-	todoInput.value = ""; // Clear the input field after adding the todo item
+	todoInput.value = ""; //ugugdliig hustgeh
 }
+//---------------renderTodos-----------------
 function renderTodos() {
 	let listOfTodo = document.querySelector(".todo-list-group");
+	let inProgressList = document.querySelector(".in-progress-list-group");
+	let completedList = document.querySelector(".completed-list-group");
+	let blockedli = document.querySelector(".blocked-list-group");
 	listOfTodo.innerHTML = "";
+	inProgressList.innerHTML = "";
+	completedList.innerHTML = "";
+	blockedli.innerHTML = "";
+	index = 0;
+	//-----------for loop-----------------
 	for (let index = 0; index < todos.length; index++) {
 		// Get the current todo item
-		let todo = todos[index];
 
 		// Create a new li element for the todo item
 		let li = document.createElement("li");
@@ -28,42 +36,56 @@ function renderTodos() {
 			"justify-content-between",
 			"align-items-center"
 		);
-		if (todo.mark) {
-			li.classList.add("bg-success");
-		}
 		li.innerHTML = `
-        <span>${todo.task}</span> 
-        <button class="btn btn-success ml-2 mrk_btn" data-index="${index}">Mark</button>
-        <button class="btn btn-success ml-2 unmrk_btn" data-index="${index}">UnMark</button>
-        <button class="btn btn-danger del_btn"  data-index="${index}">Delete</button>
-        `;
-		listOfTodo.appendChild(li);
+				<span>${todos[index].task}</span>
+				<button class="btn btn-success ml-2 mrk_btn" data-index="${index}"><i class="bi bi-pencil" data-index="${index}"></i></button>
+				<button class="btn btn-danger del_btn"  data-index="${index}"><i class="bi bi-trash" data-index="${index}"></i></button>
+				`;
+		switch (todos[index].mark) {
+			case "TODO":
+				listOfTodo.appendChild(li);
+				break;
+			case "INPROGRESS":
+				inProgressList.appendChild(li);
+				break;
+			case "DONE":
+				completedList.appendChild(li);
+				break;
+			case "BLOCKED":
+				blockedli.appendChild(li);
+			default:
+				listOfTodo.appendChild(li);
+		}
 	}
+	connectEvent();
+
 	// Add event listeners to Mark and Delete buttons
+}
+
+const connectEvent = () => {
 	document.querySelectorAll(".mrk_btn").forEach((button) => {
 		button.addEventListener("click", markTodo);
 	});
 	document.querySelectorAll(".del_btn").forEach((button) => {
 		button.addEventListener("click", deleteTodo);
 	});
-	document.querySelectorAll(".unmrk_btn").forEach((button) => {
-		button.addEventListener("click", unmarkTodo);
-	});
-}
+};
 
 function markTodo(event) {
 	let index = event.target.getAttribute("data-index");
-	todos[index].mark = true;
-	renderTodos();
-}
-function unmarkTodo(event) {
-	let index = event.target.getAttribute("data-index");
-	todos[index].mark = false;
+	//mark deer darhad hiih uildel
 	renderTodos();
 }
 
 function deleteTodo(event) {
+	console.log(event.target);
 	let index = event.target.getAttribute("data-index");
+	console.log("/ / / / / / ");
+	console.log("index", index);
+	console.log(todos[index]);
+	console.log("/ / / / / / ");
+
 	todos.splice(index, 1);
+
 	renderTodos();
 }
