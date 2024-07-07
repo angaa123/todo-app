@@ -38,8 +38,8 @@ function renderTodos() {
 		);
 		li.innerHTML = `
 				<span>${todos[index].task}</span>
-				<button class="btn btn-success ml-2 mrk_btn" data-index="${index}"><i class="bi bi-pencil" data-index="${index}"></i></button>
-				<button class="btn btn-danger del_btn" data-bs-toggle="modal"data-bs-target="#editTodoModal" data-index="${index}"><i class="bi bi-trash" data-index="${index}"></i></button>
+				<button class="btn btn-success ml-2 mrk_btn" data-bs-toggle="modal"data-bs-target="#editTodoModal" data-index="${index}"><i class="bi bi-pencil" data-index="${index}"></i></button>
+				<button class="btn btn-danger del_btn"  data-index="${index}"><i class="bi bi-trash" data-index="${index}"></i></button>
 				`;
 		switch (todos[index].mark) {
 			case "TODO":
@@ -61,22 +61,30 @@ function renderTodos() {
 
 	// Add event listeners to Mark and Delete buttons
 }
-
+//-----------------------------------------------
 const connectEvent = () => {
 	document.querySelectorAll(".mrk_btn").forEach((button) => {
 		button.addEventListener("click", markTodo);
 	});
+
 	document.querySelectorAll(".del_btn").forEach((button) => {
 		button.addEventListener("click", deleteTodo);
 	});
 };
 
+//-------------------------------------------------------
 function markTodo(event) {
+	
 	let index = event.target.getAttribute("data-index");
-	//mark deer darhad hiih uildel
-	renderTodos();
+	let todoEditSave = document.querySelector("#todoEditSave");
+	function callMakechange(){
+		makeChange(index);
+		index = null;
+	}
+	todoEditSave.addEventListener("click",callMakechange);
+	
 }
-
+//------------------------------------------------
 function deleteTodo(event) {
 	console.log(event.target);
 	let index = event.target.getAttribute("data-index");
@@ -87,5 +95,11 @@ function deleteTodo(event) {
 
 	todos.splice(index, 1);
 
+	renderTodos();
+}
+//========================================
+function makeChange(index){
+	todos[index].mark = document.querySelector("#editMark").value
+	console.log(index);
 	renderTodos();
 }
