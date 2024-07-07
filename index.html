@@ -76,6 +76,43 @@
 					</div>
 				</div>
 			</div>
+			<!-- ----------mondal edit ----------------- -->
+			<div class="modal fade" id="editTodoModal" tabindex="-1">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="exampleModalLabel">Task edit</h1>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							<label for="exampleFormControlInput1" class="form-label"
+								>edit </label
+							>
+							<select name="mark" id="editMark">
+								<option value="TODO">To do</option>
+								<option value="INPROGRESS">In progress</option>
+								<option value="DONE">Done</option>
+								<option value="BLOCKED">Blocked</option>
+							</select>
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-primary"
+								id="todoEditSave"
+								data-bs-dismiss="modal"
+							>
+								save
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
 			<!-- --------- -->
 			<div class="container-lg d-flex justify-content-around">
 				<div class="border p-2 g-col-6" style="width: rem">
