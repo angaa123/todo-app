@@ -39,7 +39,7 @@ function renderTodos() {
 		li.innerHTML = `
 				<span>${todos[index].task}</span>
 				<button class="btn btn-success ml-2 mrk_btn" data-index="${index}"><i class="bi bi-pencil" data-index="${index}"></i></button>
-				<button class="btn btn-danger del_btn"  data-index="${index}"><i class="bi bi-trash" data-index="${index}"></i></button>
+				<button class="btn btn-danger del_btn" data-bs-toggle="modal"data-bs-target="#editTodoModal" data-index="${index}"><i class="bi bi-trash" data-index="${index}"></i></button>
 				`;
 		switch (todos[index].mark) {
 			case "TODO":
