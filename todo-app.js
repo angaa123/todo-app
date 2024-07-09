@@ -4,7 +4,6 @@ function main() {
 	let todoSave = document.querySelector("#todoSave");
 	todoSave.addEventListener("click", addTodo);
 }
-
 function addTodo() {
 	let markSave = document.querySelector("#mark");
 	let todoInput = document.querySelector("#todoInput");
@@ -27,7 +26,6 @@ function renderTodos() {
 	//-----------for loop-----------------
 	for (let index = 0; index < todos.length; index++) {
 		// Get the current todo item
-
 		// Create a new li element for the todo item
 		let li = document.createElement("li");
 		li.classList.add(
@@ -38,7 +36,7 @@ function renderTodos() {
 		);
 		li.innerHTML = `
 				<span>${todos[index].task}</span>
-				<button class="btn btn-success ml-2 mrk_btn" data-index="${index}"><i class="bi bi-pencil" data-index="${index}"></i></button>
+				<button class="btn btn-success ml-2 mrk_btn" data-bs-toggle="modal"data-bs-target="#editTodoModal" data-index="${index}"><i class="bi bi-pencil" data-index="${index}"></i></button>
 				<button class="btn btn-danger del_btn"  data-index="${index}"><i class="bi bi-trash" data-index="${index}"></i></button>
 				`;
 		switch (todos[index].mark) {
@@ -53,15 +51,17 @@ function renderTodos() {
 				break;
 			case "BLOCKED":
 				blockedli.appendChild(li);
+				break;
 			default:
 				listOfTodo.appendChild(li);
+				break;
 		}
 	}
 	connectEvent();
 
 	// Add event listeners to Mark and Delete buttons
 }
-
+//-----------------------------------------------
 const connectEvent = () => {
 	document.querySelectorAll(".mrk_btn").forEach((button) => {
 		button.addEventListener("click", markTodo);
@@ -72,13 +72,17 @@ const connectEvent = () => {
 	});
 };
 
-//-----
+//-------------------------------------------------------
 function markTodo(event) {
 	let index = event.target.getAttribute("data-index");
-	//mark deer darhad hiih uildel
-	renderTodos();
+	let todoEditSave = document.querySelector("#todoEditSave");
+	function callMakechange() {
+		makeChange(index);
+		index = null;
+	}
+	todoEditSave.addEventListener("click", callMakechange);
 }
-
+//------------------------------------------------
 function deleteTodo(event) {
 	console.log(event.target);
 	let index = event.target.getAttribute("data-index");
@@ -86,8 +90,16 @@ function deleteTodo(event) {
 	console.log("index", index);
 	console.log(todos[index]);
 	console.log("/ / / / / / ");
-
 	todos.splice(index, 1);
 
+	renderTodos();
+}
+//========================================
+function makeChange(index) {
+	if (index !== null) {
+		todos[index].mark = document.querySelector("#editMark").value;
+		console.log(index);
+		console.log(todos[index]);
+	}
 	renderTodos();
 }
