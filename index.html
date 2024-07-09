@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta
@@ -21,7 +21,7 @@
 		></script>
 	</head>
 	<body>
-		<div class="mt-5 container-lg">
+		<div class="mt-5 container bg-black">
 			<!-- modalbtn -->
 			<div class="d-flex justify-content-end mb-3">
 				<button
@@ -91,9 +91,9 @@
 						</div>
 						<div class="modal-body">
 							<label for="exampleFormControlInput1" class="form-label"
-								>edit </label
-							>
-							<select name="mark" id="editMark">
+								>edit
+							</label>
+							<select name="editMark" id="editMark">
 								<option value="TODO">To do</option>
 								<option value="INPROGRESS">In progress</option>
 								<option value="DONE">Done</option>
@@ -114,29 +114,31 @@
 				</div>
 			</div>
 			<!-- --------- -->
-			<div class="container-lg d-flex justify-content-around">
-				<div class="border p-2 g-col-6" style="width: rem">
+			<div
+				class="container bg-warning row row-cols-sm-2 row-cols-xs-1 row-cols-lg-4 justify-content-around"
+			>
+				<div class="border col rounded-3 bg-black">
 					<header class="card-header d-flex justify-content-between">
 						<h3><i class="fa-solid fa-circle"></i>To do</h3>
 						<span class="badge badge-pill">0</span>
 					</header>
 					<ul class="todo-list-group"></ul>
 				</div>
-				<div class="border p-2 g-col-6" style="width: rem">
+				<div class="border col rounded-3 bg-black">
 					<header class="card-header d-flex justify-content-between">
 						<h3><i class="fa-solid fa-circle"></i>In progress</h3>
 						<span class="badge badge-pill">0</span>
 					</header>
 					<ul class="in-progress-list-group"></ul>
 				</div>
-				<div class="border p-2 g-col-6" style="width: rem">
+				<div class="border col rounded-3 bg-black">
 					<header class="card-header d-flex justify-content-between">
 						<h3><i class="fa-solid fa-circle"></i>Completed</h3>
 						<span class="badge badge-pill">0</span>
 					</header>
 					<ul class="completed-list-group"></ul>
 				</div>
-				<div class="border p-2 g-col-6" style="width: rem">
+				<div class="border col rounded-3 bg-black">
 					<header class="card-header d-flex justify-content-between" class="he">
 						<h3><i class="fa-solid fa-circle text-danger"></i>Blocked</h3>
 						<span class="badge badge-pill">0</span>
